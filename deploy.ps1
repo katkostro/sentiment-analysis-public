@@ -67,12 +67,8 @@ Write-Host "`n     Done.`n" -ForegroundColor Green
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host "  Deployment Complete!" -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "`nTo chat with the agent:" -ForegroundColor White
-Write-Host "  python src/chat_with_agent.py" -ForegroundColor Gray
-Write-Host "`nTo analyse a file:" -ForegroundColor White
-Write-Host "  python src/chat_with_agent.py --file 'Survey Samples.xlsx'" -ForegroundColor Gray
-Write-Host "`nTo run all Language capabilities on a file:" -ForegroundColor White
-Write-Host "  python src/sentiment_agent.py 'Survey Samples.xlsx' --all-capabilities" -ForegroundColor Gray
-Write-Host "`nAvailable capabilities: sentiment, key-phrases, entities, pii," -ForegroundColor Gray
-Write-Host "  entity-linking, language-detection, abstractive-summary, extractive-summary" -ForegroundColor Gray
-Write-Host "`nTo switch to Fabric OneLake: set DATA_SOURCE=fabric in .env" -ForegroundColor Gray
+Write-Host "`nTo start the Streamlit UI:" -ForegroundColor White
+Write-Host "  streamlit run src/app.py" -ForegroundColor Gray
+Write-Host "`nOr for CLI testing:" -ForegroundColor White
+Write-Host "  python src/test_agent.py --file 'Survey Samples.xlsx'" -ForegroundColor Gray
+Write-Host "  python src/test_agent.py --interactive" -ForegroundColor Gray

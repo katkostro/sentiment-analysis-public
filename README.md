@@ -102,64 +102,76 @@ All functions support batching up to 10 documents per call for efficiency.
 
 ## Prerequisites
 
-- Azure subscription
-- Azure CLI (`az`) or Azure Developer CLI (`azd`)
-- Python 3.10+
-- Appropriate Azure credits (GPT-4o deployment required)
+**Required:**
+- Azure subscription with appropriate credits (GPT-4o deployment required)
+- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (`az`)
+- [Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd) (`azd`)
+- Python 3.10 or later
+
+**Install prerequisites on Windows:**
+```powershell
+winget install Microsoft.AzureCLI
+winget install Microsoft.Azd
+winget install Python.Python.3.11
+```
 
 ## Quick Start
 
-### 1. Deploy infrastructure
+### Option A: Automated Deployment (Recommended)
 
 ```powershell
-# Authenticate
+# 1. Clone the repository
+git clone https://github.com/katkostro/sentiment-analysis.git
+cd sentiment-analysis
+
+# 2. Authenticate to Azure
 az login
 
-# Deploy with Azure Developer CLI
-azd auth login
-azd up
-```
+# 3. Run automated deployment script
+./deploy.ps1
 
-This provisions:
-- Azure AI Services + Foundry Project
-- GPT-4o deployment (50K TPM)
-- Azure AI Language service
-- Role assignments for managed identity
-
-### 2. Configure environment
-
-Copy `.env.example` to `.env` and fill in the values from deployment outputs:
-
-```env
-# Get these from: azd env get-values
-AZURE_AI_SERVICES_ENDPOINT=https://...
-AZURE_LANGUAGE_ENDPOINT=https://...
-FOUNDRY_PROJECT_NAME=sentiment-analysis
-GPT_DEPLOYMENT_NAME=gpt-4o
-
-# Tool mode: sdk (default) or mcp (when transport is fixed)
-LANGUAGE_TOOL_MODE=sdk
-```
-
-### 3. Create the agent
-
-```powershell
-python src/create_agent.py
-```
-
-This creates the agent in Azure AI Foundry and saves configuration to `agent_config.json`.
-
-### 4. Run the Streamlit app
-
-```powershell
-# Load environment variables and start app
-Get-Content .env | ForEach-Object { 
-    if ($_ -match '^([^#][^=]+)=(.*)') { 
-        [System.Environment]::SetEnvironmentVariable($matches[1].Trim(), $matches[2].Trim()) 
-    } 
-}
+# 4. Start the UI
 streamlit run src/app.py
 ```
+
+The script will:
+- Provision all Azure infrastructure
+- Create the `.env` file automatically
+- Install Python dependencies
+- Create the AI agent
+
+### Option B: Manual Step-by-Step
+
+```powershell
+# 1. Clone and navigate to repository
+git clone https://github.com/katkostro/sentiment-analysis.git
+cd sentiment-analysis
+
+# 2. Authenticate to Azure
+az login
+
+# 3. Deploy infrastructure (will prompt for environment name and region)
+azd up
+
+# 4. Create environment variables file
+azd env get-values | Out-File -FilePath .env -Encoding utf8
+
+# 5. Install Python dependencies
+pip install -r src/requirements.txt
+
+# 6. Create the agent
+python src/create_agent.py
+
+# 7. Start the Streamlit UI
+streamlit run src/app.py
+```
+
+**Infrastructure deployed:**
+- Azure AI Services + Foundry Project
+- GPT-4o deployment (50K TPM capacity)
+- Azure AI Language service
+- Log Analytics Workspace + Application Insights
+- RBAC role assignments for managed identity
 
 Open http://localhost:8501 in your browser.
 

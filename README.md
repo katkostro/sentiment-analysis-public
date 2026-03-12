@@ -180,12 +180,12 @@ Open http://localhost:8501 in your browser.
 3. **Analyze**
    - Click "Analyse File"
    - Agent processes up to 100 responses (first 100 if file is larger)
-   - Results show:
-     - Overall sentiment distribution (positive/negative/neutral)
-     - Key themes and topics
-     - Named entities (people, places, organizations)
-     - Negative responses requiring attention
-     - 3 actionable recommendations
+   - Results are presented in a structured format:
+     1. **Customer Sentiment Overview** — Executive summary with key insights
+     2. **Where Sentiment Breaks Down** — Table showing sentiment percentages by theme (Technical Support Quality, Communication, Tools, Documentation, Product Features, etc.)
+     3. **Key Drivers of Negative Sentiment** — Top 5 recurring issues with their share of negative impact
+     4. **Key Drivers of Positive Sentiment** — Top strengths customers consistently praise
+     5. **Insight-Driven Recommendations** — Numbered, prioritized recommendations with reasoning and specific actions
 
 ### Multi-Column Analysis
 

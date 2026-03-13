@@ -46,6 +46,10 @@ Thumbs.db
 # Office temporary files
 ~$*
 
+# Sample/test data files (may contain sensitive data)
+*.xlsx
+*.docx
+
 # Azure
 .azure/
 

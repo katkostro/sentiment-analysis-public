@@ -2,6 +2,11 @@
 
 AI-powered survey analysis using **Azure AI Foundry Agent** with **Azure AI Language** integration. Upload Excel/CSV files through a Streamlit web interface and get comprehensive sentiment analysis, key themes, and actionable recommendations.
 
+> [!IMPORTANT]
+> **DISCLAIMER:** This is a proof-of-concept (POC) sample application provided for demonstration and educational purposes only. This code is provided "AS IS" without warranty of any kind. Microsoft makes no warranties, express or implied, with respect to this sample code and disclaims all implied warranties including, without limitation, any implied warranties of merchantability, fitness for a particular purpose, or non-infringement. The entire risk arising out of the use or performance of the sample code remains with you. In no event shall Microsoft, its authors, or anyone else involved in the creation, production, or delivery of the code be liable for any damages whatsoever (including, without limitation, damages for loss of business profits, business interruption, loss of business information, or other pecuniary loss) arising out of the use of or inability to use the sample code, even if Microsoft has been advised of the possibility of such damages.
+>
+> **Use this code at your own risk.** This is not a production-ready solution and should not be used in production environments without proper review, testing, and modifications to meet your specific requirements.
+
 ## Features
 
 - 📊 **Multi-column analysis** — Select 1-2 columns from Excel/CSV files
